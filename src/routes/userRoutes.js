@@ -1,31 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-let users = [];
+const {
+  createUser,
+  getUsers,
+  updateUser,
+  deleteUser
+} = require('../controllers/userController');
 
-router.post('/users', (req, res) => {
-    const user = req.body;
-    users.push(user);
-    res.status(201).json(user); 
-});
+router.post('/users',createUser);
 
-router.get('/users', (req, res) => {
-    res.json(users);
-});
+router.get('/users',getUsers);
 
-router.put('/users/:id', (req, res) => {
-    const id = Number(req.params.id);
-    const updatedUser = req.body;
+router.put('/users/:id',updateUser);
 
-    users[id] = updatedUser;
-    res.json(updatedUser);
-});
-
-router.delete('/users/:id', (req, res) => {
-    const id = Number(req.params.id);
-
-    users.splice(id, 1);
-    res.send('Usuário deletado');
-});
+router.delete('/users/:id',deleteUser);
 
 module.exports = router;
