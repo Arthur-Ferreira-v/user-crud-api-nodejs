@@ -1,9 +1,22 @@
 let users = [];
 
 function createUser(req, res) {
-   const user = req.body;
-   users.push(user);
-   res.status(201).json(user);
+   const {name,email} = req.body;
+   
+
+   if (!name || !email){
+    return res.status(400).json({error: "Nome e email incorretos"})
+   };
+
+   const newUser = {
+    id: users.length + 1,
+    name,
+    email
+   };
+
+   users.push(newUser);
+
+   res.status(201).json(newUser);
 }
 
 function getUsers(req, res){
