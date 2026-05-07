@@ -1,16 +1,33 @@
-🚀 User CRUD API
+# User CRUD API
 
-API simples de CRUD de usuários com Node.js e Express.
+Uma API REST simples desenvolvida com Node.js e Express para praticar operações CRUD (Create, Read, Update e Delete).
 
-## Funcionalidades
-- Criar usuário
-- Listar usuários
-- Atualizar usuário
-- Deletar usuário
+Este projeto foi criado com foco em aprendizado de backend, organização de código e boas práticas no desenvolvimento de APIs.
 
-## Tecnologias
+---
+
+# 🚀 Tecnologias utilizadas
+
 - Node.js
 - Express
+- JavaScript
+- Thunder Client
 
-## Observação
-Dados armazenados em memória (sem banco de dados).
+---
+
+# 📁 Estrutura do projeto
+
+```plaintext
+CRUD/
+ ├── node_modules/
+ ├── src/
+ │    ├── controllers/
+ │    │    └── userController.js
+ │    ├── routes/
+ │    │    └── userRoutes.js
+ │    ├── app.js
+ │    └── server.js
+ ├── .gitignore
+ ├── package.json
+ ├── package-lock.json
+ └── README.md
