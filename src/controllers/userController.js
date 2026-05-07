@@ -5,7 +5,7 @@ function createUser(req, res) {
    
 
    if (!name || !email){
-    return res.status(400).json({error: "Nome e email incorretos"})
+    return res.status(400).json({error: "Nome and email incorrect"})
    };
 
    const newUser = {
@@ -25,17 +25,44 @@ function getUsers(req, res){
 
 function updateUser(req, res){
     const id = Number(req.params.id);
-    const newData = req.body;
 
-    users[id] = newData;
-    res.json(newData);
+    if (!users[id]){
+        return res.status(404).json({
+            error: "User not found"
+        });
+    }
+
+    const { name, email } = req.body;
+
+    if (!name || !email){
+        return res.status(400).json({
+            error: "Name and email are required"
+        });
+    }
+
+    users[id] = {
+        id: users[id].id,
+        name,
+        email
+    };
+
+    res.json(users[id]);
 }
 
 function deleteUser(req, res){
     const id = Number(req.params.id);
 
+    if (!users[id]) {
+        return res.status(404).json({
+            error: "User not found"
+        });
+    }
+
     users.splice(id, 1);
-    res.send('Usuário deletado');
+
+    res.json({
+        message: "User deleted successfully"
+    });
 }
 
 module.exports = {
